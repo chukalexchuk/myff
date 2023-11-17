@@ -7,10 +7,11 @@ app = Flask(__name__)
 
 
 # Fetch the Firebase Admin SDK JSON from GitHub Secrets
-# firebase_admin_secret = os.getenv('FIREBASE_ADMIN_SDK_JSON')
+firebase_admin_secret = os.getenv('FIREBASE_ADMIN_SDK_JSON')
 
 # Initialize Firebase
 cred = credentials.Certificate('FIREBASE_ADMIN_SDK_JSON')
+
 firebase_admin.initialize_app(cred)
 
 # Initialize Firestore
@@ -38,11 +39,11 @@ def index():
 
                 return redirect(url_for('success'))
             else:
-                error_message = 'Email already subscribed.'
+                error_message = "You've already subscribed."
                 return render_template('index.html', error_message=error_message)
 
         else:
-            error_message = 'Please provide a valid email address.'
+            error_message = "Please provide a valid email address."
             return render_template('index.html', error_message=error_message)
 
     return render_template('index.html', error_message=None)
