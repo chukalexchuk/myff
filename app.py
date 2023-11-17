@@ -7,12 +7,12 @@ app = Flask(__name__)
 
 
 # Fetch the Firebase Admin SDK JSON from GitHub Secrets
-# firebase_admin_secret = os.getenv('FIREBASE_ADMIN_SDK_JSON')
+firebase_admin_secret = os.getenv('FIREBASE_ADMIN_SDK_JSON')
 
 # Initialize Firebase
-cred = credentials.Certificate('FIREBASE_ADMIN_SDK_JSON')
+# cred = credentials.Certificate('FIREBASE_ADMIN_SDK_JSON')
 
-firebase_admin.initialize_app(cred)
+firebase_admin.initialize_app(firebase_admin_secret)
 
 # Initialize Firestore
 db = firestore.client()
