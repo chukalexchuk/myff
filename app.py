@@ -10,7 +10,7 @@ app = Flask(__name__)
 firebase_admin_secret = os.getenv('FIREBASE_ADMIN_SDK_JSON')
 
 # Initialize Firebase
-cred = credentials.Certificate('FIREBASE_ADMIN_SDK_JSON')
+cred = credentials.Certificate(firebase_admin_secret)
 
 firebase_admin.initialize_app(cred)
 
